@@ -1,0 +1,34 @@
+@import "tailwindcss";
+
+@theme {
+  --color-primary: #0a1628;
+  --color-secondary: #c8a951;
+  --color-accent: #f8f6f0;
+  --color-text: #1a1a2e;
+  --color-light-gray: #f0ede6;
+}
+
+:root {
+  color-scheme: light;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  min-height: 100vh;
+  background-color: var(--color-accent);
+  color: var(--color-text);
+  font-family: var(--font-roboto), sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: var(--color-primary);
+  font-family: var(--font-inter), sans-serif;
+}
