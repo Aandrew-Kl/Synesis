@@ -5,6 +5,7 @@ import {
   MapPin,
   Phone,
 } from "lucide-react";
+import Image from "next/image";
 import Link from "next/link";
 
 export default function Footer() {
@@ -12,7 +13,16 @@ export default function Footer() {
     <footer className="border-t border-[#E8E4DA] bg-[#F0EDE6] text-[#0A1628]">
       <div className="mx-auto grid max-w-7xl grid-cols-1 gap-8 px-6 py-16 md:grid-cols-2 lg:grid-cols-4">
         <div>
-          <h2 className="text-2xl font-bold tracking-wider text-[#0A1628]">SYNESIS</h2>
+          <div className="flex items-center gap-3">
+            <Image
+              src="/Synesis/logo.png"
+              alt="Synesis Logo"
+              width={44}
+              height={44}
+              className="h-11 w-11"
+            />
+            <h2 className="text-2xl font-bold tracking-wider text-[#0A1628]">SYNESIS</h2>
+          </div>
           <div className="mt-3 h-0.5 w-12 bg-[#C8A951]" />
           <p className="mt-4 text-sm text-[#6A6A7A]">Strategic Advisors</p>
           <p className="mt-2 text-xs text-[#8A8A9A]">

@@ -1,6 +1,7 @@
 "use client";
 
 import { AnimatePresence, motion } from "framer-motion";
+import Image from "next/image";
 import { Menu, X } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -108,14 +109,23 @@ export default function Header() {
       >
         <Link
           href="/"
-          className="group flex flex-col"
+          className="group flex items-center gap-3"
           onClick={() => setIsMobileMenuOpen(false)}
           aria-label="Αρχική"
         >
-          <span className="text-xl font-bold tracking-[0.28em] text-[#0A1628] sm:text-2xl">
-            SYNESIS
-          </span>
-          <span className="mt-1 h-[2px] w-9 bg-[#C8A951] transition-all duration-300 group-hover:w-12" />
+          <Image
+            src="/Synesis/logo.png"
+            alt="Synesis Logo"
+            width={48}
+            height={48}
+            className={`transition-all duration-300 ${isScrolled ? "h-9 w-9" : "h-12 w-12"}`}
+          />
+          <div className="flex flex-col">
+            <span className="text-xl font-bold tracking-[0.28em] text-[#0A1628] sm:text-2xl">
+              SYNESIS
+            </span>
+            <span className="mt-0.5 h-[2px] w-9 bg-[#C8A951] transition-all duration-300 group-hover:w-12" />
+          </div>
         </Link>
 
         <nav className="hidden items-center gap-8 md:flex">

@@ -160,7 +160,7 @@ export default function ContactPage() {
 
             <div className="mt-8 h-64 overflow-hidden rounded-xl">
               <iframe
-                title="Χάρτης Κέρκυρα"
+                title="Χάρτης Κέρκυρας"
                 src="https://maps.google.com/maps?q=Αγίων+Πάντων+1+Κέρκυρα&output=embed"
                 width="100%"
                 height="100%"
@@ -269,7 +269,7 @@ export default function ContactPage() {
                   variants={fieldVariants}
                   className="rounded-lg bg-green-100 px-4 py-3 text-sm text-green-700"
                 >
-                  Το μήνυμα σας στάλθηκε επιτυχώς!
+                  Το μήνυμά σας στάλθηκε επιτυχώς!
                 </motion.p>
               ) : null}
             </motion.form>
