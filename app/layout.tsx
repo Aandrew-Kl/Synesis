@@ -1,5 +1,9 @@
 import type { Metadata } from "next";
 import { Inter, Roboto } from "next/font/google";
+import Footer from "./components/Footer";
+import Header from "./components/Header";
+import ScrollToTop from "./components/ScrollToTop";
+import StructuredData from "./components/StructuredData";
 import "./globals.css";
 
 const inter = Inter({
@@ -19,6 +23,13 @@ const roboto = Roboto({
 export const metadata: Metadata = {
   title: "Synesis Strategic Advisors | Στρατηγικοί Σύμβουλοι Επιχειρήσεων",
   description: "Υπηρεσίες Οικονομικού Συμβούλου και Στρατηγικού Σχεδιασμού στην Κέρκυρα",
+  openGraph: {
+    title: "Synesis Strategic Advisors | Στρατηγικοί Σύμβουλοι Επιχειρήσεων",
+    description: "Υπηρεσίες Οικονομικού Συμβούλου και Στρατηγικού Σχεδιασμού στην Κέρκυρα",
+    type: "website",
+    locale: "el_GR",
+    siteName: "Synesis Strategic Advisors",
+  },
 };
 
 export default function RootLayout({
@@ -29,7 +40,11 @@ export default function RootLayout({
   return (
     <html lang="el" className="scroll-smooth">
       <body className={`${roboto.variable} ${inter.variable} bg-accent text-text antialiased`}>
+        <Header />
         {children}
+        <Footer />
+        <ScrollToTop />
+        <StructuredData />
       </body>
     </html>
   );
