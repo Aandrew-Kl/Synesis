@@ -1,7 +1,6 @@
 "use client";
 
 import { motion } from "framer-motion";
-import Image from "next/image";
 import { ChevronDown } from "lucide-react";
 import Link from "next/link";
 import { MouseEvent } from "react";
@@ -43,24 +42,14 @@ export default function Hero() {
         }}
       />
 
-      {/* Butterfly decorative image — right side, cropped to show only butterfly */}
-      <motion.div
-        aria-hidden="true"
-        initial={{ opacity: 0, scale: 0.9 }}
-        animate={{ opacity: 0.08, scale: 1 }}
-        transition={{ duration: 1.5, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
-        className="pointer-events-none absolute -right-10 top-[55%] hidden w-[500px] -translate-y-1/2 overflow-hidden mix-blend-multiply md:block lg:right-4 lg:w-[580px]"
-        style={{ clipPath: "inset(30% 0 0 0)" }}
-      >
-        <Image
-          src="/Synesis/butterfly.jpg"
-          alt=""
-          width={960}
-          height={920}
-          className="h-auto w-full"
-          priority
-        />
-      </motion.div>
+      {/* Floating geometric shapes */}
+      <div aria-hidden="true" className="pointer-events-none absolute inset-0 overflow-hidden">
+        <div className="absolute -left-10 top-16 h-56 w-56 rotate-12 border-2 border-[#C8A951]/30 [animation:spin_32s_linear_infinite]" />
+        <div className="absolute right-16 top-1/4 h-36 w-36 rounded-full border-2 border-[#0A1628]/20 [animation:spin_26s_linear_infinite_reverse]" />
+        <div className="absolute bottom-24 left-1/3 h-44 w-44 rotate-45 border-2 border-[#C8A951]/25 [animation:spin_42s_linear_infinite]" />
+        <div className="absolute -right-8 bottom-1/3 h-24 w-24 rounded-lg border-2 border-[#0A1628]/15 [animation:spin_38s_linear_infinite]" />
+        <div className="absolute left-2/3 top-12 h-20 w-20 rotate-[30deg] border border-[#C8A951]/20 [animation:spin_28s_linear_infinite_reverse]" />
+      </div>
 
       {/* Gold decorative accent */}
       <div aria-hidden="true" className="absolute right-0 top-0 h-full w-1/3 bg-gradient-to-l from-[#C8A951]/[0.04] to-transparent" />
