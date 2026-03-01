@@ -114,7 +114,7 @@ export default function Header() {
           aria-label="Αρχική"
         >
           <Image
-            src="/Synesis/logo.png"
+            src="/logo.png"
             alt="Synesis Logo"
             width={48}
             height={48}

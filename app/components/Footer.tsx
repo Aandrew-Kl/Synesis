@@ -15,7 +15,7 @@ export default function Footer() {
         <div>
           <div className="flex items-center gap-3">
             <Image
-              src="/Synesis/logo.png"
+              src="/logo.png"
               alt="Synesis Logo"
               width={44}
               height={44}
