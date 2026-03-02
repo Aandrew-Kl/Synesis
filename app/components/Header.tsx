@@ -7,10 +7,10 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { MouseEvent, useEffect, useState } from "react";
 
-type SectionId = "who-are-we" | "biography" | "services";
+type SectionId = "who-are-we" | "services";
 
 const HEADER_OFFSET = 80;
-const SECTION_IDS: SectionId[] = ["who-are-we", "biography", "services"];
+const SECTION_IDS: SectionId[] = ["who-are-we", "services"];
 
 export default function Header() {
   const pathname = usePathname();
@@ -149,25 +149,6 @@ export default function Header() {
           </Link>
 
           <Link
-            href={isHomePage ? "#biography" : "/#biography"}
-            onClick={(event) => handleAnchorClick(event, "biography")}
-            className={`group relative text-sm font-medium tracking-wide transition-colors duration-300 ${
-              activeSection === "biography" && isHomePage
-                ? "text-[#0A1628]"
-                : "text-[#0A1628]/75 hover:text-[#0A1628]"
-            }`}
-          >
-            Βιογραφικό
-            <span
-              className={`absolute -bottom-2 left-0 h-0.5 bg-[#C8A951] transition-all duration-300 ${
-                activeSection === "biography" && isHomePage
-                  ? "w-full"
-                  : "w-0 group-hover:w-full"
-              }`}
-            />
-          </Link>
-
-          <Link
             href={isHomePage ? "#services" : "/#services"}
             onClick={(event) => handleAnchorClick(event, "services")}
             className={`group relative text-sm font-medium tracking-wide transition-colors duration-300 ${
@@ -244,21 +225,6 @@ export default function Header() {
                 <span
                   className={`ml-3 h-2 w-2 rounded-full bg-[#C8A951] transition-opacity duration-300 ${
                     activeSection === "who-are-we" && isHomePage
-                      ? "opacity-100"
-                      : "opacity-0 group-hover:opacity-100"
-                  }`}
-                />
-              </Link>
-
-              <Link
-                href={isHomePage ? "#biography" : "/#biography"}
-                onClick={(event) => handleAnchorClick(event, "biography")}
-                className="group inline-flex items-center text-2xl font-semibold text-white transition-colors duration-300 hover:text-[#C8A951] sm:text-3xl"
-              >
-                Βιογραφικό
-                <span
-                  className={`ml-3 h-2 w-2 rounded-full bg-[#C8A951] transition-opacity duration-300 ${
-                    activeSection === "biography" && isHomePage
                       ? "opacity-100"
                       : "opacity-0 group-hover:opacity-100"
                   }`}

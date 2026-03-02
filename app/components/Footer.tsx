@@ -42,12 +42,6 @@ export default function Footer() {
               Ποιοι είμαστε
             </Link>
             <Link
-              href="/#biography"
-              className="block text-[#5A5A6A] transition-colors hover:text-[#C8A951]"
-            >
-              Βιογραφικό
-            </Link>
-            <Link
               href="/#services"
               className="block text-[#5A5A6A] transition-colors hover:text-[#C8A951]"
             >
