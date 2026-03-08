@@ -2,15 +2,24 @@
 
 import { AnimatePresence, motion } from "framer-motion";
 import Image from "next/image";
-import { Menu, X } from "lucide-react";
+import { ChevronDown, Menu, X } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { MouseEvent, useEffect, useState } from "react";
+import { MouseEvent, useEffect, useRef, useState } from "react";
 
-type SectionId = "who-are-we" | "services";
+type SectionId = "who-are-we";
 
 const HEADER_OFFSET = 80;
-const SECTION_IDS: SectionId[] = ["who-are-we", "services"];
+const SECTION_IDS: SectionId[] = ["who-are-we"];
+
+const serviceLinks = [
+  { title: "Επιχειρηματικά Σχέδια", href: "/ypiresies/epixeirematika-sxedia" },
+  { title: "Αποτίμηση Επιχειρήσεων", href: "/ypiresies/apotimisi-epixeiriseon" },
+  { title: "Διαμεσολάβηση", href: "/ypiresies/diamesolavisi" },
+  { title: "ΕΣΠΑ", href: "/ypiresies/espa" },
+  { title: "Εξωδικαστικός Συμβιβασμός", href: "/ypiresies/exodikastikos-symvivasmos" },
+  { title: "Φοροτεχνικά", href: "/ypiresies/forotexnika" },
+];
 
 export default function Header() {
   const pathname = usePathname();
@@ -19,6 +28,9 @@ export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState<SectionId | null>(null);
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const [isMobileServicesOpen, setIsMobileServicesOpen] = useState(false);
+  const dropdownTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -57,6 +69,7 @@ export default function Header() {
 
   useEffect(() => {
     setIsMobileMenuOpen(false);
+    setIsMobileServicesOpen(false);
   }, [pathname]);
 
   useEffect(() => {
@@ -94,8 +107,21 @@ export default function Header() {
     setIsMobileMenuOpen(false);
   };
 
-  const isEspaActive = pathname === "/espa";
+  const isServicesActive = pathname.startsWith("/ypiresies");
   const isContactActive = pathname === "/contact";
+
+  const handleDropdownEnter = () => {
+    if (dropdownTimeoutRef.current) {
+      clearTimeout(dropdownTimeoutRef.current);
+    }
+    setIsDropdownOpen(true);
+  };
+
+  const handleDropdownLeave = () => {
+    dropdownTimeoutRef.current = setTimeout(() => {
+      setIsDropdownOpen(false);
+    }, 150);
+  };
 
   return (
     <header
@@ -149,38 +175,58 @@ export default function Header() {
             />
           </Link>
 
-          <Link
-            href={isHomePage ? "#services" : "/#services"}
-            onClick={(event) => handleAnchorClick(event, "services")}
-            className={`group relative text-sm font-medium tracking-wide transition-colors duration-300 ${
-              activeSection === "services" && isHomePage
-                ? "text-[#0A1628]"
-                : "text-[#0A1628]/75 hover:text-[#0A1628]"
-            }`}
+          {/* Υπηρεσίες dropdown */}
+          <div
+            className="relative"
+            onMouseEnter={handleDropdownEnter}
+            onMouseLeave={handleDropdownLeave}
           >
-            Υπηρεσίες
-            <span
-              className={`absolute -bottom-2 left-0 h-0.5 bg-[#C8A951] transition-all duration-300 ${
-                activeSection === "services" && isHomePage
-                  ? "w-full"
-                  : "w-0 group-hover:w-full"
+            <Link
+              href="/ypiresies"
+              className={`group relative inline-flex items-center gap-1 text-sm font-medium tracking-wide transition-colors duration-300 ${
+                isServicesActive
+                  ? "text-[#0A1628]"
+                  : "text-[#0A1628]/75 hover:text-[#0A1628]"
               }`}
-            />
-          </Link>
+            >
+              Υπηρεσίες
+              <ChevronDown
+                size={14}
+                className={`transition-transform duration-200 ${isDropdownOpen ? "rotate-180" : ""}`}
+              />
+              <span
+                className={`absolute -bottom-2 left-0 h-0.5 bg-[#C8A951] transition-all duration-300 ${
+                  isServicesActive ? "w-full" : "w-0 group-hover:w-full"
+                }`}
+              />
+            </Link>
 
-          <Link
-            href="/espa"
-            className={`group relative text-sm font-medium tracking-wide transition-colors duration-300 ${
-              isEspaActive ? "text-[#0A1628]" : "text-[#0A1628]/75 hover:text-[#0A1628]"
-            }`}
-          >
-            ΕΣΠΑ
-            <span
-              className={`absolute -bottom-2 left-0 h-0.5 bg-[#C8A951] transition-all duration-300 ${
-                isEspaActive ? "w-full" : "w-0 group-hover:w-full"
-              }`}
-            />
-          </Link>
+            <AnimatePresence>
+              {isDropdownOpen && (
+                <motion.div
+                  initial={{ opacity: 0, y: 8 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: 8 }}
+                  transition={{ duration: 0.2, ease: "easeOut" }}
+                  className="absolute left-1/2 top-full z-50 mt-4 w-64 -translate-x-1/2 rounded-xl border border-[#E8E4DA] bg-white py-2 shadow-xl"
+                >
+                  {serviceLinks.map((link) => (
+                    <Link
+                      key={link.href}
+                      href={link.href}
+                      className={`block px-5 py-2.5 text-sm transition-colors duration-200 ${
+                        pathname === link.href
+                          ? "bg-[#F8F6F0] font-medium text-[#C8A951]"
+                          : "text-[#0A1628]/75 hover:bg-[#F8F6F0] hover:text-[#0A1628]"
+                      }`}
+                    >
+                      {link.title}
+                    </Link>
+                  ))}
+                </motion.div>
+              )}
+            </AnimatePresence>
+          </div>
 
           <Link
             href="/contact"
@@ -246,33 +292,67 @@ export default function Header() {
                 />
               </Link>
 
-              <Link
-                href={isHomePage ? "#services" : "/#services"}
-                onClick={(event) => handleAnchorClick(event, "services")}
-                className="group inline-flex items-center text-2xl font-semibold text-white transition-colors duration-300 hover:text-[#C8A951] sm:text-3xl"
-              >
-                Υπηρεσίες
-                <span
-                  className={`ml-3 h-2 w-2 rounded-full bg-[#C8A951] transition-opacity duration-300 ${
-                    activeSection === "services" && isHomePage
-                      ? "opacity-100"
-                      : "opacity-0 group-hover:opacity-100"
-                  }`}
-                />
-              </Link>
+              {/* Mobile services accordion */}
+              <div>
+                <button
+                  type="button"
+                  onClick={() => setIsMobileServicesOpen((prev) => !prev)}
+                  className="group inline-flex items-center text-2xl font-semibold text-white transition-colors duration-300 hover:text-[#C8A951] sm:text-3xl"
+                >
+                  Υπηρεσίες
+                  <ChevronDown
+                    size={20}
+                    className={`ml-2 transition-transform duration-200 ${
+                      isMobileServicesOpen ? "rotate-180" : ""
+                    }`}
+                  />
+                  <span
+                    className={`ml-3 h-2 w-2 rounded-full bg-[#C8A951] transition-opacity duration-300 ${
+                      isServicesActive ? "opacity-100" : "opacity-0 group-hover:opacity-100"
+                    }`}
+                  />
+                </button>
 
-              <Link
-                href="/espa"
-                onClick={() => setIsMobileMenuOpen(false)}
-                className="group inline-flex items-center text-2xl font-semibold text-white transition-colors duration-300 hover:text-[#C8A951] sm:text-3xl"
-              >
-                ΕΣΠΑ
-                <span
-                  className={`ml-3 h-2 w-2 rounded-full bg-[#C8A951] transition-opacity duration-300 ${
-                    isEspaActive ? "opacity-100" : "opacity-0 group-hover:opacity-100"
-                  }`}
-                />
-              </Link>
+                <AnimatePresence>
+                  {isMobileServicesOpen && (
+                    <motion.div
+                      initial={{ height: 0, opacity: 0 }}
+                      animate={{ height: "auto", opacity: 1 }}
+                      exit={{ height: 0, opacity: 0 }}
+                      transition={{ duration: 0.25, ease: "easeOut" }}
+                      className="overflow-hidden"
+                    >
+                      <div className="ml-4 mt-4 flex flex-col gap-4 border-l-2 border-[#C8A951]/30 pl-4">
+                        <Link
+                          href="/ypiresies"
+                          onClick={() => setIsMobileMenuOpen(false)}
+                          className={`text-lg transition-colors duration-200 ${
+                            pathname === "/ypiresies"
+                              ? "font-medium text-[#C8A951]"
+                              : "text-white/70 hover:text-[#C8A951]"
+                          }`}
+                        >
+                          Όλες οι υπηρεσίες
+                        </Link>
+                        {serviceLinks.map((link) => (
+                          <Link
+                            key={link.href}
+                            href={link.href}
+                            onClick={() => setIsMobileMenuOpen(false)}
+                            className={`text-lg transition-colors duration-200 ${
+                              pathname === link.href
+                                ? "font-medium text-[#C8A951]"
+                                : "text-white/70 hover:text-[#C8A951]"
+                            }`}
+                          >
+                            {link.title}
+                          </Link>
+                        ))}
+                      </div>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </div>
 
               <Link
                 href="/contact"

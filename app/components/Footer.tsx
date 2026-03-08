@@ -42,13 +42,13 @@ export default function Footer() {
               Ποιοι είμαστε
             </Link>
             <Link
-              href="/#services"
+              href="/ypiresies"
               className="block text-[#5A5A6A] transition-colors hover:text-[#C8A951]"
             >
               Υπηρεσίες
             </Link>
             <Link
-              href="/espa"
+              href="/ypiresies/espa"
               className="block text-[#5A5A6A] transition-colors hover:text-[#C8A951]"
             >
               Προγράμματα ΕΣΠΑ

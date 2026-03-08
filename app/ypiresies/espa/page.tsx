@@ -359,7 +359,11 @@ export default function EspaPage() {
           <Link href="/" className="transition-colors hover:text-[#C8A951]">
             Αρχική
           </Link>{" "}
-          &gt; Προγράμματα ΕΣΠΑ
+          &gt;{" "}
+          <Link href="/ypiresies" className="transition-colors hover:text-[#C8A951]">
+            Υπηρεσίες
+          </Link>{" "}
+          &gt; ΕΣΠΑ
         </p>
       </section>
 
@@ -369,7 +373,7 @@ export default function EspaPage() {
         ))}
       </section>
 
-      <section className="bg-[#0A1628] px-6 py-20">
+      <section className="bg-gradient-to-br from-[#F8F6F0] to-[#EDE9DF] px-6 py-20">
         <div className="mx-auto max-w-3xl text-center">
           <motion.div
             initial={{ opacity: 0, y: 24 }}
@@ -377,11 +381,11 @@ export default function EspaPage() {
             viewport={{ once: true, amount: 0.3 }}
             transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
           >
-            <h2 className="text-3xl font-bold text-white sm:text-4xl">
+            <h2 className="text-3xl font-bold text-[#0A1628] sm:text-4xl">
               Χρειάζεστε Επιχειρηματικό Σχέδιο;
             </h2>
             <div className="mx-auto mt-4 h-1 w-20 rounded-full bg-[#C8A951]" />
-            <p className="mt-6 text-base leading-relaxed text-white/70 md:text-lg">
+            <p className="mt-6 text-base leading-relaxed text-[#5A5A6A] md:text-lg">
               Η Synesis Strategic Advisors αναλαμβάνει την εκπόνηση
               επιχειρηματικών σχεδίων και μελετών βιωσιμότητας για ένταξη στα
               προγράμματα ΕΣΠΑ. Επικοινωνήστε μαζί μας για εξατομικευμένη
