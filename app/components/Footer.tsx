@@ -48,6 +48,12 @@ export default function Footer() {
               Υπηρεσίες
             </Link>
             <Link
+              href="/espa"
+              className="block text-[#5A5A6A] transition-colors hover:text-[#C8A951]"
+            >
+              Προγράμματα ΕΣΠΑ
+            </Link>
+            <Link
               href="/contact"
               className="block text-[#5A5A6A] transition-colors hover:text-[#C8A951]"
             >
