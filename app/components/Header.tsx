@@ -209,7 +209,7 @@ export default function Header() {
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: 8 }}
                   transition={{ duration: 0.2, ease: "easeOut" }}
-                  className="absolute left-1/2 top-full z-50 mt-4 w-64 -translate-x-1/2 rounded-xl border border-[#DDD8CC] bg-[#F8F6F0] py-2 shadow-xl"
+                  className="absolute left-1/2 top-full z-50 mt-4 w-64 -translate-x-1/2 rounded-2xl border border-white/60 bg-white/60 py-2 shadow-2xl backdrop-blur-xl"
                 >
                   {serviceLinks.map((link) => (
                     <Link
@@ -218,8 +218,8 @@ export default function Header() {
                       onClick={() => setIsDropdownOpen(false)}
                       className={`block px-5 py-2.5 text-sm transition-colors duration-200 ${
                         pathname === link.href
-                          ? "bg-[#EDE9DF] font-medium text-[#C8A951]"
-                          : "text-[#0A1628]/75 hover:bg-[#EDE9DF] hover:text-[#0A1628]"
+                          ? "bg-[#C8A951]/15 font-medium text-[#C8A951]"
+                          : "text-[#0A1628]/75 hover:bg-[#C8A951]/10 hover:text-[#0A1628]"
                       }`}
                     >
                       {link.title}
