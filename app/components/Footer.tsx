@@ -26,7 +26,7 @@ export default function Footer() {
           <div className="mt-3 h-0.5 w-12 bg-[#C8A951]" />
           <p className="mt-4 text-sm text-[#6A6A7A]">Strategic Advisors</p>
           <p className="mt-2 text-xs text-[#8A8A9A]">
-            Στρατηγικοί Σύμβουλοι Επιχειρήσεων στην Κέρκυρα
+            Σύμβουλοι Επιχειρήσεων στην Κέρκυρα
           </p>
         </div>
 

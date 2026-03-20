@@ -21,10 +21,10 @@ const roboto = Roboto({
 });
 
 export const metadata: Metadata = {
-  title: "Synesis Strategic Advisors | Στρατηγικοί Σύμβουλοι Επιχειρήσεων",
+  title: "Synesis Strategic Advisors | Σύμβουλοι Επιχειρήσεων",
   description: "Υπηρεσίες Οικονομικού Συμβούλου και Στρατηγικού Σχεδιασμού στην Κέρκυρα",
   openGraph: {
-    title: "Synesis Strategic Advisors | Στρατηγικοί Σύμβουλοι Επιχειρήσεων",
+    title: "Synesis Strategic Advisors | Σύμβουλοι Επιχειρήσεων",
     description: "Υπηρεσίες Οικονομικού Συμβούλου και Στρατηγικού Σχεδιασμού στην Κέρκυρα",
     type: "website",
     locale: "el_GR",
