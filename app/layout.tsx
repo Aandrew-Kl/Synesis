@@ -23,6 +23,10 @@ const roboto = Roboto({
 export const metadata: Metadata = {
   title: "Synesis Strategic Advisors | Σύμβουλοι Επιχειρήσεων",
   description: "Υπηρεσίες Οικονομικού Συμβούλου και Στρατηγικού Σχεδιασμού στην Κέρκυρα",
+  icons: {
+    icon: "/logo.png",
+    apple: "/logo.png",
+  },
   openGraph: {
     title: "Synesis Strategic Advisors | Σύμβουλοι Επιχειρήσεων",
     description: "Υπηρεσίες Οικονομικού Συμβούλου και Στρατηγικού Σχεδιασμού στην Κέρκυρα",
