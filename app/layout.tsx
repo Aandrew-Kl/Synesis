@@ -24,8 +24,11 @@ export const metadata: Metadata = {
   title: "Synesis Strategic Advisors | Σύμβουλοι Επιχειρήσεων",
   description: "Υπηρεσίες Οικονομικού Συμβούλου και Στρατηγικού Σχεδιασμού στην Κέρκυρα",
   icons: {
-    icon: "/logo.png",
-    apple: "/logo.png",
+    icon: [
+      { url: "/favicon-32.png", sizes: "32x32", type: "image/png" },
+      { url: "/favicon.png", sizes: "64x64", type: "image/png" },
+    ],
+    apple: "/favicon.png",
   },
   openGraph: {
     title: "Synesis Strategic Advisors | Σύμβουλοι Επιχειρήσεων",
